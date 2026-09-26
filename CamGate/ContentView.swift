@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-            CameraPreview(session: cam.session)
+            CameraPreview(model: cam)
                 .ignoresSafeArea()
             VStack {
                 Spacer()
@@ -77,9 +77,7 @@ struct GateLine: View {
         HStack {
             Text(name).foregroundColor(.white)
             Spacer()
-            Text(s)
-                .foregroundColor(ok ? .green : .red)
-                
+            Text(s).foregroundColor(ok ? .green : .red)
         }
     }
 }
@@ -87,10 +85,14 @@ struct GateLine: View {
 final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     let session = AVCaptureSession()
     @Published var verdict: GateVerdict?
-    private var usedPosition: AVCaptureDevice.Position = .front
 
     private let queue = DispatchQueue(label: "camgate.vision", qos: .userInteractive)
     private lazy var visionRequests = Self.buildVisionRequests()
+    private var dataOutput: AVCaptureVideoDataOutput?
+    private var usedPosition: AVCaptureDevice.Position = .front
+    private var configured = false
+    private var lastPub: TimeInterval = 0
+    private weak var previewLayer: AVCaptureVideoPreviewLayer?
 
     static func buildVisionRequests() -> [VNRequest] {
         let detect = VNDetectFaceLandmarksRequest()
@@ -100,12 +102,18 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
         return [detect, qual]
     }
 
+    func attachPreview(_ layer: AVCaptureVideoPreviewLayer) {
+        previewLayer = layer
+        pinMirroring()
+    }
+
     func start() {
+        if configured && session.isRunning { return }
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         switch status {
         case .authorized: break
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { granted in
+            AVCaptureDevice.requestAccess(for: .video) { _ in
                 DispatchQueue.main.async { self.start() }
             }
             return
@@ -113,36 +121,68 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
             DispatchQueue.main.async { self.verdict = GateVerdict.fail("Kamera verweigert — Einstellungen") }
             return
         }
-        session.beginConfiguration()
-        session.sessionPreset = .hd1280x720
-        guard let dev = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
-              let input = try? AVCaptureDeviceInput(device: dev),
-              session.canAddInput(input) else { return }
-        self.usedPosition = dev.position
-        session.addInput(input)
-        let out = AVCaptureVideoDataOutput()
-        out.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange]
-        out.setSampleBufferDelegate(self, queue: queue)
-        if session.canAddOutput(out) { session.addOutput(out) }
-        session.commitConfiguration()
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.session.startRunning()
+        if session.inputs.isEmpty {
+            session.beginConfiguration()
+            session.sessionPreset = .hd1280x720
+            guard let dev = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
+                  let input = try? AVCaptureDeviceInput(device: dev),
+                  session.canAddInput(input) else {
+                session.commitConfiguration()
+                return
+            }
+            usedPosition = dev.position
+            session.addInput(input)
+            let out = AVCaptureVideoDataOutput()
+            out.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange]
+            out.setSampleBufferDelegate(self, queue: queue)
+            if session.canAddOutput(out) {
+                session.addOutput(out)
+                dataOutput = out
+            }
+            session.commitConfiguration()
+            configured = true
+        }
+        pinMirroring()
+        if !session.isRunning {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.session.startRunning()
+            }
         }
     }
-    func stop() { session.stopRunning() }
+
+    private func pinMirroring() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            if let c = self.previewLayer?.connection {
+                c.automaticallyAdjustsVideoMirroring = false
+                c.isVideoMirrored = (self.usedPosition == .front)
+            }
+            if let c = self.dataOutput?.connection(with: .video) {
+                c.automaticallyAdjustsVideoMirroring = false
+                c.isVideoMirrored = (self.usedPosition == .front)
+            }
+        }
+    }
+
+    func stop() { if session.isRunning { session.stopRunning() } }
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let px = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        let ori: CGImagePropertyOrientation = (self.usedPosition == .front) ? .leftMirrored : .right
+        let ori: CGImagePropertyOrientation = (usedPosition == .front) ? .leftMirrored : .right
         let handler = VNImageRequestHandler(cvPixelBuffer: px, orientation: ori, options: [:])
-        do {
-            try handler.perform(visionRequests)
-        } catch { return }
+        do { try handler.perform(visionRequests) } catch { return }
         guard let face = (visionRequests[0] as? VNDetectFaceLandmarksRequest)?.results?.first else {
-            DispatchQueue.main.async { self.verdict = nil }
+            publish(nil)
             return
         }
         let v = evaluate(obs: face, buffer: px)
+        publish(v)
+    }
+
+    private func publish(_ v: GateVerdict?) {
+        let now = Date().timeIntervalSince1970
+        guard now - lastPub > 0.08 else { return }
+        lastPub = now
         DispatchQueue.main.async { self.verdict = v }
     }
 }
@@ -152,11 +192,12 @@ struct CameraPreview: UIViewRepresentable {
         override class var layerClass: AnyClass { AVCaptureVideoPreviewLayer.self }
         var previewLayer: AVCaptureVideoPreviewLayer { layer as! AVCaptureVideoPreviewLayer }
     }
-    let session: AVCaptureSession
+    let model: CameraModel
     func makeUIView(context: Context) -> PreviewView {
         let v = PreviewView()
-        v.previewLayer.session = session
+        v.previewLayer.session = model.session
         v.previewLayer.videoGravity = .resizeAspectFill
+        model.attachPreview(v.previewLayer)
         return v
     }
     func updateUIView(_ uiView: PreviewView, context: Context) {}
