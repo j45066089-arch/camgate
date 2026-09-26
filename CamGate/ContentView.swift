@@ -63,12 +63,11 @@ struct InfoRow: View {
     }
 }
 struct GateLine: View {
-    let name: String
-    let val: Double
-    let s: String
-    let limit: Double
-    var lower: Double? = nil
-    var minIsBad = false
+    var name: String; var val: Double; var s: String; var limit: Double
+    var lower: Double? = nil; var minIsBad = false
+    init(_ name: String, _ val: Double, s: String, limit: Double, lower: Double? = nil, minIsBad: Bool = false) {
+        self.name = name; self.val = val; self.s = s; self.limit = limit; self.lower = lower; self.minIsBad = minIsBad
+    }
     private var ok: Bool {
         if let lo = lower { return val >= lo && val <= limit }
         if minIsBad { return val >= limit }
