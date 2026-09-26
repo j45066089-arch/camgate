@@ -1,6 +1,6 @@
 //
 //  IncodeModels.swift
-//  CamGate — lädt Incodes eigene CoreML-Modelle (aus bunq entschlüsselt)
+//  CamGate — lädt Incodes echte CoreML-Modelle + Align/Crop wie Incode
 //
 import Foundation
 import CoreML
@@ -13,11 +13,11 @@ enum IncodeInference {
     static let occlusionSize = 224
 
     struct Result {
-        var qualityScore: Float = .nan
-        var attributeConf: [Float] = []
+        var qualityScore: Float = .nan   // 0..1 regressor, hoeher = besser
+        var attributeConf: [Float] = []  // 4 Klassen (neutral/brille/maske/kopfbed. — unkalibriert)
         var attrLabel: Int = -1
-        var occlusionRatio: Float = .nan
-        var error: String?
+        var occlusionRatio: Float = .nan // Anteil verdeckter Pixel (argmax der 2-Kanal-Maske)
+        var errors: [String] = []
     }
 
     private static let qualityModel: MLModel? = try? load("selfie_quality_model_v1_0_fp16")
@@ -31,22 +31,15 @@ enum IncodeInference {
         return try MLModel(contentsOf: url)
     }
 
-    // ---------- Preprocessing ----------
-    // Incode-Schema: Face-Box (Vision, Origin unten-links) -> zentriert auf Face-Center,
-    // Rand-Padding ~25%, quadratischer Crop, Resize auf Modellgröße, 0..1-Normalisierung.
-    // Format pro Modell:
-    //   selfie_quality : BGR  (qualityForBGRMat:)
-    //   face_attributes: RGB  (attributesForRGBMat:)
-    //   face_occlusion : RGB  (occlusionForRGBMat:)
-    static func makeArray(buf: CVPixelBuffer, box: CGRect, size: Int, rgbOrder: [Int]) -> MLMultiArray? {
+    // Vision-Box (normalisiert, Origin unten-links) -> quadratischer Center-Crop mit 20% Rand -> resize -> CHW Float32 0..1
+    // rgb: [0,1,2] = RGB, [2,1,0] = BGR
+    static func makeArray(buf: CVPixelBuffer, box: CGRect, size: Int, batched: Bool, rgbOrder: [Int]) -> MLMultiArray? {
         let W = CVPixelBufferGetWidth(buf), H = CVPixelBufferGetHeight(buf)
-        // Vision-Rect (Origin unten-links) -> Pixel-Rect (Origin oben-links)
+        // Vision -> Pixel-Rect (top-left)
         let x0 = box.origin.x * CGFloat(W)
         let y0 = (1.0 - box.origin.y - box.height) * CGFloat(H)
         let w0 = box.width * CGFloat(W)
         let h0 = box.height * CGFloat(H)
-
-        // Quadrat um Face-Center mit 25% Padding
         let cx = x0 + w0/2, cy = y0 + h0/2
         let side = max(w0, h0) * 1.25
         var crop = CGRect(x: cx - side/2, y: cy - side/2, width: side, height: side)
@@ -55,12 +48,8 @@ enum IncodeInference {
 
         let ci = CIImage(cvPixelBuffer: buf)
         var img = ci.cropped(to: crop)
-
-        // Auf Zielgröße skalieren (quadratisch: einfach gleichförmig)
         let target = CGFloat(size)
-        let sx = target / img.extent.width
-        let sy = target / img.extent.height
-        img = img.transformed(by: CGAffineTransform(scaleX: sx, y: sy))
+        img = img.transformed(by: CGAffineTransform(scaleX: target/img.extent.width, y: target/img.extent.height))
 
         let ctx = CIContext(options: [.workingColorSpace: NSNull(), .cacheIntermediates: false])
         var rgba = [UInt8](repeating: 0, count: size*size*4)
@@ -68,8 +57,9 @@ enum IncodeInference {
                    bounds: CGRect(x: 0, y: 0, width: target, height: target),
                    format: .RGBA8, colorSpace: nil)
 
-        // [1,3,H,W] Float32 CHW
-        let shape: [NSNumber] = [1, 3, NSNumber(value: size), NSNumber(value: size)]
+        var shape: [NSNumber]
+        if batched { shape = [1, 3, NSNumber(value: size), NSNumber(value: size)] }
+        else       { shape = [3, NSNumber(value: size), NSNumber(value: size)] }
         guard let arr = try? MLMultiArray(shape: shape, dataType: .float32) else { return nil }
         let p = arr.dataPointer.bindMemory(to: Float.self, capacity: arr.count)
         var idx = 0
@@ -88,82 +78,47 @@ enum IncodeInference {
     static func run(_ buf: CVPixelBuffer, box: CGRect) -> Result {
         var r = Result()
 
-        // 1) Quality (BGR, 112)
-        if let m = qualityModel, let arr = makeArray(buf: buf, box: box, size: qualitySize, rgbOrder: [2,1,0]) {
+        // 1) Quality — input [1,3,112,112], Output "scores" (Regressor, Scalar)
+        if let m = qualityModel, let arr = makeArray(buf: buf, box: box, size: qualitySize, batched: true, rgbOrder: [2,1,0]) {
             do {
                 let out = try m.prediction(from: MLDictionaryFeatureProvider(dictionary: ["input": MLFeatureValue(multiArray: arr)]))
                 if let scores = out.featureValue(for: "scores")?.multiArrayValue {
                     let p = scores.dataPointer.bindMemory(to: Float.self, capacity: scores.count)
-                    var sum: Float = 0
-                    for i in 0..<scores.count { sum += p[i] }
-                    r.qualityScore = sum / Float(scores.count)
-                } else {
-                    r.error = (r.error ?? "") + " quality: kein Output"
-                }
-            } catch {
-                r.error = (r.error ?? "") + " quality: \(error.localizedDescription)"
-            }
-        } else if qualityModel == nil { r.error = "quality-Modell fehlt" }
+                    r.qualityScore = p[0]
+                    if scores.count > 1 {
+                        var m: Float = 0; for i in 0..<scores.count { m += p[i] }
+                        r.qualityScore = m / Float(scores.count)
+                    }
+                } else { r.errors.append("quality: kein 'scores' Output") }
+            } catch { r.errors.append("quality: \(error.localizedDescription)") }
+        } else if qualityModel == nil { r.errors.append("quality-Modell fehlt") }
 
-        // 2) Attributes (RGB, 160)
-        if let m = attributeModel, let arr = makeArray(buf: buf, box: box, size: attributeSize, rgbOrder: [0,1,2]) {
+        // 2) Attributes — input [1,3,160,160], Output "output_conf" [1,4]
+        if let m = attributeModel, let arr = makeArray(buf: buf, box: box, size: attributeSize, batched: true, rgbOrder: [0,1,2]) {
             do {
                 let out = try m.prediction(from: MLDictionaryFeatureProvider(dictionary: ["input": MLFeatureValue(multiArray: arr)]))
                 if let conf = out.featureValue(for: "output_conf")?.multiArrayValue {
                     let p = conf.dataPointer.bindMemory(to: Float.self, capacity: conf.count)
                     r.attributeConf = (0..<conf.count).map { p[$0] }
                     r.attrLabel = r.attributeConf.enumerated().max(by: { $0.element < $1.element })?.offset ?? -1
-                } else {
-                    r.error = (r.error ?? "") + " attr: kein Output"
-                }
-            } catch {
-                r.error = (r.error ?? "") + " attr: \(error.localizedDescription)"
-            }
-        } else if attributeModel == nil { r.error = "attr-Modell fehlt" }
+                } else { r.errors.append("attr: kein 'output_conf'") }
+            } catch { r.errors.append("attr: \(error.localizedDescription)") }
+        } else if attributeModel == nil { r.errors.append("attr-Modell fehlt") }
 
-        // 3) Occlusion (RGB, 224) — Input-Shape laut metadata: [3,224,224] (OHNE Batch)
-        if let m = occlusionModel, let arr = makeArray(buf: buf, box: box, size: occlusionSize, rgbOrder: [0,1,2]) {
-            // CoreML akzeptiert für MLMultiArray-Input die exakt deklarierte Shape.
-            // Falls [1,3,H,W] abgelehnt wird, versuchen wir [3,H,W].
-            func runOcclusion(_ input: MLMultiArray) throws -> Float? {
-                let out = try m.prediction(from: MLDictionaryFeatureProvider(dictionary: ["input": MLFeatureValue(multiArray: input)]))
-                guard let mask = out.featureValue(for: "output")?.multiArrayValue else { return nil }
-                let p = mask.dataPointer.bindMemory(to: Float.self, capacity: mask.count)
-                let n = mask.count
-                // [1,1,2,224,224] oder [2,224,224]: Kanal-Layout ermitteln
-                if n >= 2 {
-                    let per = n / 2
-                    var occ: Float = 0
-                    for i in 0..<per {
-                        if p[i + per] > p[i] { occ += 1 }
-                    }
-                    return occ / Float(per)
-                }
-                return nil
-            }
+        // 3) Occlusion — input [3,224,224] (OHNE Batch), Output "output" [1,1,2,224,224]
+        if let m = occlusionModel, let arr = makeArray(buf: buf, box: box, size: occlusionSize, batched: false, rgbOrder: [0,1,2]) {
             do {
-                if let ratio = try runOcclusion(arr) {
-                    r.occlusionRatio = ratio
-                } else {
-                    r.error = (r.error ?? "") + " occl: kein Output"
-                }
-            } catch {
-                // Fallback: [3,H,W]
-                let shape: [NSNumber] = [3, NSNumber(value: occlusionSize), NSNumber(value: occlusionSize)]
-                if let arr3 = try? MLMultiArray(shape: shape, dataType: .float32) {
-                    let src = arr.dataPointer.bindMemory(to: Float.self, capacity: arr.count)
-                    let dst = arr3.dataPointer.bindMemory(to: Float.self, capacity: arr3.count)
-                    for i in 0..<arr3.count { dst[i] = src[i] }
-                    do {
-                        if let ratio = try runOcclusion(arr3) {
-                            r.occlusionRatio = ratio
-                        }
-                    } catch {
-                        r.error = (r.error ?? "") + " occl: \(error.localizedDescription)"
-                    }
-                }
-            }
-        } else if occlusionModel == nil { r.error = "occl-Modell fehlt" }
+                let out = try m.prediction(from: MLDictionaryFeatureProvider(dictionary: ["input": MLFeatureValue(multiArray: arr)]))
+                if let mask = out.featureValue(for: "output")?.multiArrayValue {
+                    let p = mask.dataPointer.bindMemory(to: Float.self, capacity: mask.count)
+                    let per = mask.count / 2
+                    guard per > 0 else { r.errors.append("occl: leeres Output") }
+                    var occ: Float = 0
+                    for i in 0..<per { if p[i + per] > p[i] { occ += 1 } }
+                    r.occlusionRatio = occ / Float(per)
+                } else { r.errors.append("occl: kein 'output'") }
+            } catch { r.errors.append("occl: \(error.localizedDescription)") }
+        } else if occlusionModel == nil { r.errors.append("occl-Modell fehlt") }
 
         return r
     }
