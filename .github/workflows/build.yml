@@ -17,6 +17,13 @@ jobs:
             -configuration Release -sdk iphoneos -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
             -destination "generic/platform=iOS" build
+      - name: Copy ML models into app bundle
+        run: |
+          APP=build/Build/Products/Release-iphoneos/CamGate.app
+          cp -R CamGate/Models/selfie_quality_model_v1_0_fp16.mlmodelc "$APP/"
+          cp -R CamGate/Models/face_attributes_v1_3_f16.mlmodelc "$APP/"
+          cp -R CamGate/Models/face_occlusion_v0_2_f16.mlmodelc "$APP/"
+          ls -la "$APP" | head -20
       - name: Package .ipa
         run: |
           APP=build/Build/Products/Release-iphoneos/CamGate.app

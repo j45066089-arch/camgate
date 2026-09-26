@@ -27,10 +27,3 @@ targets:
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGNING_REQUIRED: "NO"
         CODE_SIGNING_ALLOWED: "NO"
-    resources:
-      - path: CamGate/Models/selfie_quality_model_v1_0_fp16.mlmodelc
-        buildPhase: resources
-      - path: CamGate/Models/face_attributes_v1_3_f16.mlmodelc
-        buildPhase: resources
-      - path: CamGate/Models/face_occlusion_v0_2_f16.mlmodelc
-        buildPhase: resources
