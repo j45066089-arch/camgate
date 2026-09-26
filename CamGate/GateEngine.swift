@@ -46,6 +46,7 @@ enum IncodeText {
     static let tooFar      = "Näher herangehen"
     static let notAligned  = "Gesicht an Silhouette ausrichten"
     static let unknown     = "Kamera ansehen"
+    static let faceNotFound = "Gesicht ausrichten und Kamera ansehen"
     static let lookCam     = "Gesicht an weißer Silhouette ausrichten"
     static let getReady    = "Bereit machen…"
     static let capturing   = "Nicht bewegen!\nFoto wird aufgenommen…"
