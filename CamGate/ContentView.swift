@@ -1,55 +1,37 @@
 //
 //  ContentView.swift
-//  CamGate — Incode Selfie-Verifikation (Kopie: gleiche Gates, gleiche Texte, gleiche Modelle)
+//  CamGate — Incode Selfie-Verifikation (Kopie)
 //
 import SwiftUI
 import AVFoundation
 import Vision
 
-// MARK: - Phasen des Incode-Flows
-enum SelfiePhase {
-    case tutorial          // "Selfie aufnehmen" Intro
-    case scanning          // Live: Silhouette + Feedback
-    case capturing         // "Nicht bewegen! Foto wird aufgenommen…"
-    case result            // "Gesicht erfasst!" oder Fehlergrund
+enum CamState {
+    case idle, scanning, capturing, done
 }
 
 struct ContentView: View {
     @StateObject private var cam = CameraModel()
-    @State private var phase: SelfiePhase = .tutorial
 
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             CameraPreview(model: cam).ignoresSafeArea()
 
-            switch phase {
-            case .tutorial:
-                TutorialView {
-                    phase = .scanning
-                    cam.beginScanning()
-                }
+            switch cam.state {
+            case .idle:
+                TutorialView { cam.beginScanning() }
             case .scanning:
-                ScanningView(model: cam) {
-                    // Auto-Capture ausgelöst
-                    phase = .capturing
-                    cam.captureCurrentFrame()
-                } onDone: { verdict, incode in
-                    phase = .result
-                }
+                ScanningView(model: cam)
             case .capturing:
-                CapturingView(model: cam) { verdict, incode in
-                    phase = .result
-                }
-            case .result:
-                if let v = cam.finalVerdict {
-                    ResultView(verdict: v, incode: cam.finalIncode, onRetry: {
-                        phase = .scanning
-                        cam.beginScanning()
-                    }, onRestart: {
-                        phase = .tutorial
-                    })
-                }
+                CapturingView()
+            case .done:
+                ResultView(
+                    verdict: cam.finalVerdict ?? GateVerdict.fail("Unbekannt"),
+                    incode: cam.finalIncode,
+                    onRetry: { cam.beginScanning() },
+                    onRestart: { cam.resetToIdle() }
+                )
             }
         }
         .onAppear { cam.start() }
@@ -57,7 +39,7 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Tutorial (exakt Incodes Texte)
+// MARK: - Tutorial
 struct TutorialView: View {
     let onStart: () -> Void
     var body: some View {
@@ -89,16 +71,13 @@ struct TutorialView: View {
     }
 }
 
-// MARK: - Live-Scanning mit Silhouette + Incode-Feedback
+// MARK: - Live-Scanning
 struct ScanningView: View {
     @ObservedObject var model: CameraModel
-    let onCapture: () -> Void
-    let onDone: (GateVerdict?, IncodeInference.Result?) -> Void
 
     var body: some View {
         VStack {
             Spacer()
-            // Silhouette (Oval)
             ZStack {
                 Ellipse()
                     .stroke(Color.white, lineWidth: 3)
@@ -129,18 +108,18 @@ struct ScanningView: View {
     }
     private var feedbackText: String {
         guard let v = model.verdict else { return IncodeText.faceNotFound }
-        if v.ok { return IncodeText.captured }
+        if v.ok { return IncodeText.getReady }
         return v.reason ?? IncodeText.unknown
     }
 }
 
-// MARK: - Capture-Phase
+// MARK: - Capture
 struct CapturingView: View {
-    @ObservedObject var model: CameraModel
-    let onDone: (GateVerdict?, IncodeInference.Result?) -> Void
     var body: some View {
         VStack {
             Spacer()
+            ProgressView().tint(.white).scaleEffect(1.4)
+                .padding(.bottom, 20)
             Text(IncodeText.capturing)
                 .font(.title3).bold().foregroundColor(.white)
                 .multilineTextAlignment(.center)
@@ -148,13 +127,10 @@ struct CapturingView: View {
                 .background(Color.black.opacity(0.55)).cornerRadius(16)
             Spacer()
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) { onDone(model.finalVerdict, model.finalIncode) }
-        }
     }
 }
 
-// MARK: - Ergebnis (End-Report: exakter Fehlergrund)
+// MARK: - Ergebnis
 struct ResultView: View {
     let verdict: GateVerdict
     let incode: IncodeInference.Result?
@@ -180,9 +156,6 @@ struct ResultView: View {
             if let incode = incode {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Incode-Analyse").font(.caption).bold().foregroundColor(.cyan)
-                    ForEach(incode.errors, id: \.self) { e in
-                        Text("⚠️ \(e)").font(.caption2).foregroundColor(.orange)
-                    }
                     if incode.errors.isEmpty {
                         Text("Quality-Score: \(String(format: "%.3f", incode.qualityScore))")
                             .font(.caption).foregroundColor(.white)
@@ -190,6 +163,10 @@ struct ResultView: View {
                             .font(.caption).foregroundColor(.white)
                         Text("Occlusion: \(String(format: "%.1f", incode.occlusionRatio * 100))% verdeckt")
                             .font(.caption).foregroundColor(incode.occlusionRatio < 0.3 ? .green : .orange)
+                    } else {
+                        ForEach(incode.errors, id: \.self) { e in
+                            Text("⚠️ \(e)").font(.caption2).foregroundColor(.orange)
+                        }
                     }
                 }
                 .padding(14).background(Color.black.opacity(0.55)).cornerRadius(12)
@@ -212,31 +189,28 @@ struct ResultView: View {
     }
 }
 
-// MARK: - Camera-Model
+// MARK: - Camera-Model (State-Machine)
 final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     let session = AVCaptureSession()
+    @Published var state: CamState = .idle
     @Published var verdict: GateVerdict?
     @Published var finalVerdict: GateVerdict?
     @Published var finalIncode: IncodeInference.Result?
 
     private let queue = DispatchQueue(label: "camgate.vision", qos: .userInteractive)
     private lazy var visionRequests = Self.buildVisionRequests()
-    private var dataOutput: AVCaptureVideoDataOutput?
     private var usedPosition: AVCaptureDevice.Position = .front
     private var configured = false
     private var lastPub: TimeInterval = 0
-    private weak var previewLayer: AVCaptureVideoPreviewLayer?
-    private var lastFaceBox: CGRect?
-    private var lastBuffer: CVPixelBuffer?
-    private var captureRequested = false
+    private var okSince: Date?
+    private var captureInProgress = false
+    private var running = false
 
     static func buildVisionRequests() -> [VNRequest] {
         let detect = VNDetectFaceLandmarksRequest()
         detect.revision = VNDetectFaceLandmarksRequestRevision3
         return [detect]
     }
-
-    func attachPreview(_ layer: AVCaptureVideoPreviewLayer) { previewLayer = layer; pinMirroring() }
 
     func start() {
         if configured && session.isRunning { return }
@@ -260,32 +234,28 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
             let out = AVCaptureVideoDataOutput()
             out.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange]
             out.setSampleBufferDelegate(self, queue: queue)
-            if session.canAddOutput(out) { session.addOutput(out); dataOutput = out }
+            if session.canAddOutput(out) { session.addOutput(out) }
             session.commitConfiguration()
             configured = true
         }
-        pinMirroring()
-        if !session.isRunning { DispatchQueue.global(qos: .userInitiated).async { self.session.startRunning() } }
-    }
-
-    func beginScanning() { finalVerdict = nil; finalIncode = nil }
-
-    func captureCurrentFrame() {
-        captureRequested = true
-    }
-
-    private func pinMirroring() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            if let c = self.previewLayer?.connection {
-                c.automaticallyAdjustsVideoMirroring = false
-                c.isVideoMirrored = (self.usedPosition == .front)
-            }
-            if let c = self.dataOutput?.connection(with: .video) {
-                c.automaticallyAdjustsVideoMirroring = false
-                c.isVideoMirrored = (self.usedPosition == .front)
+        if !session.isRunning {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.session.startRunning()
+                self.running = true
             }
         }
+    }
+
+    func beginScanning() {
+        okSince = nil
+        captureInProgress = false
+        finalVerdict = nil
+        finalIncode = nil
+        DispatchQueue.main.async { self.state = .scanning }
+    }
+
+    func resetToIdle() {
+        DispatchQueue.main.async { self.state = .idle }
     }
 
     func stop() { if session.isRunning { session.stopRunning() } }
@@ -296,22 +266,34 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
         let handler = VNImageRequestHandler(cvPixelBuffer: px, orientation: ori, options: [:])
         do { try handler.perform(visionRequests) } catch { return }
         guard let face = (visionRequests[0] as? VNDetectFaceLandmarksRequest)?.results?.first else {
-            lastFaceBox = nil; lastBuffer = nil
-            publish(GateVerdict.fail(IncodeText.faceNotFound)); return
+            okSince = nil
+            publish(GateVerdict.fail(IncodeText.faceNotFound))
+            return
         }
-        lastFaceBox = face.boundingBox
-        lastBuffer = px
         let v = evaluateLive(obs: face, buffer: px)
         publish(v)
 
-        // Auto-Capture: wenn Gates OK und Capture angefordert
-        if captureRequested && v.ok {
-            captureRequested = false
-            let incode = IncodeInference.run(px, box: face.boundingBox)
-            DispatchQueue.main.async {
-                self.finalVerdict = v
-                self.finalIncode = incode
+        // Auto-Capture: Gates 1.8s stabil OK
+        if state == .scanning && !captureInProgress {
+            if v.ok {
+                if okSince == nil { okSince = Date() }
+                else if Date().timeIntervalSince(okSince!) >= 1.8 {
+                    triggerCapture(px, box: face.boundingBox, verdict: v)
+                }
+            } else {
+                okSince = nil
             }
+        }
+    }
+
+    private func triggerCapture(_ buf: CVPixelBuffer, box: CGRect, verdict v: GateVerdict) {
+        captureInProgress = true
+        DispatchQueue.main.async { self.state = .capturing }
+        let incode = IncodeInference.run(buf, box: box)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+            self.finalVerdict = v
+            self.finalIncode = incode
+            self.state = .done
         }
     }
 
@@ -323,6 +305,7 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
     }
 }
 
+// MARK: - Preview (konstant gespiegelt via Layer-Transform — kein Connection-Flicker)
 struct CameraPreview: UIViewRepresentable {
     class PreviewView: UIView {
         override class var layerClass: AnyClass { AVCaptureVideoPreviewLayer.self }
@@ -333,7 +316,8 @@ struct CameraPreview: UIViewRepresentable {
         let v = PreviewView()
         v.previewLayer.session = model.session
         v.previewLayer.videoGravity = .resizeAspectFill
-        model.attachPreview(v.previewLayer)
+        // Frontkamera: einmal spiegeln, konstant. Kein automaticallyAdjusts* — das war der Flicker.
+        v.previewLayer.transform = CATransform3DMakeScale(-1, 1, 1)
         return v
     }
     func updateUIView(_ uiView: PreviewView, context: Context) {}
