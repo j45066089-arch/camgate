@@ -1,0 +1,31 @@
+name: build-ipa
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install xcodegen
+        run: brew install xcodegen
+      - name: Generate project
+        run: xcodegen generate
+      - name: Build (unsigned)
+        run: |
+          xcodebuild -project CamGate.xcodeproj -scheme CamGate \
+            -configuration Release -sdk iphoneos -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            -destination "generic/platform=iOS" build
+      - name: Package .ipa
+        run: |
+          APP=build/Build/Products/Release-iphoneos/CamGate.app
+          mkdir -p Payload
+          cp -R "$APP" Payload/
+          zip -qry CamGate.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CamGate
+          path: |
+            CamGate.ipa
+            build/Build/Products/Release-iphoneos/CamGate.app
