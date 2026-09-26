@@ -35,8 +35,7 @@ enum IncodeInference {
         guard let url = Bundle.main.url(forResource: name, withExtension: "mlmodelc") else {
             throw NSError(domain: "CamGate", code: 1, userInfo: [NSLocalizedDescriptionKey: "\(name).mlmodelc nicht im Bundle"])
         }
-        let compiled = try MLModel(contentsOf: url)
-        return compiled
+        return try MLModel(contentsOf: url)
     }
 
     // ---- CoreML-Input bauen: CVPixelBuffer -> RGBA8 -> crop -> resize -> [1,3,H,W] Float32 ----
