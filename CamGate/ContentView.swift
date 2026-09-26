@@ -4,6 +4,7 @@
 //
 import SwiftUI
 import AVFoundation
+import Vision
 
 struct ContentView: View {
     @StateObject private var cam = CameraModel()
@@ -79,7 +80,7 @@ struct GateLine: View {
             Spacer()
             Text(s)
                 .foregroundColor(ok ? .green : .red)
-                .bold(ok == false)
+                
         }
     }
 }

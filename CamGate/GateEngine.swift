@@ -44,10 +44,6 @@ func poseFrom(_ obs: VNFaceObservation) -> (roll: Double, pitch: Double, yaw: Do
 // === EAR ueber iBUG-68-Indizes (Vision-68-Konvention) ===
 // Rechtes Auge: 42..47 (42 inner, 45 aussen, obere 43/44, untere 47/46)
 // Linkes Auge:  36..41 (36 aussen, 39 inner, obere 37/38, untere 41/40)
-func iBUGpoint(_ key: VNLandmarkKey, _ pts: [VNLandmarkKey: SIMD2<Double>]) -> SIMD2<Double>? {
-    return pts[key]
-}
-
 func eyeRatio(inner: Int, outer: Int, upperA: Int, upperB: Int, lowerA: Int, lowerB: Int,
               geometry: VNFaceGeometry) -> Double {
     guard let pIn = geometry.point(inner), let pOut = geometry.point(outer) else { return 1 }
@@ -134,8 +130,8 @@ func evaluate(obs: VNFaceObservation, buffer: CVPixelBuffer) -> GateVerdict {
 
 struct VNFaceGeometry {
     let pts: [SIMD2<Double>]
-    init?(observations: VNFaceLandmarks2D) {
-        guard let region = observations.landmarkPoints else { return nil }
+    init?(observations: VNFaceLandmarks2D, in faceSize: CGSize = CGSize(width: 720, height: 1280)) {
+        guard let region = try? observations.pointsInFaceSpace(faceSize) else { return nil }
         let c = region.count
         guard c >= 68 else { return nil }
         pts = (0..<c).map { i -> SIMD2<Double> in
