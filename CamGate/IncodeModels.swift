@@ -27,9 +27,9 @@ enum IncodeInference {
         var error: String?
     }
 
-    static let qualityModel: MLModel? = try? load("selfie_quality_model_v1_0_fp16").model
-    static let attributeModel: MLModel? = try? load("face_attributes_v1_3_f16").model
-    static let occlusionModel: MLModel? = try? load("face_occlusion_v0_2_f16").model
+    static let qualityModel: MLModel? = try? load("selfie_quality_model_v1_0_fp16")
+    static let attributeModel: MLModel? = try? load("face_attributes_v1_3_f16")
+    static let occlusionModel: MLModel? = try? load("face_occlusion_v0_2_f16")
 
     private static func load(_ name: String) throws -> MLModel {
         guard let url = Bundle.main.url(forResource: name, withExtension: "mlmodelc") else {
