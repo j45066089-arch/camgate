@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  CamGate — Incode Selfie-Verifikation (Kopie)
+//  CamGate — Incode Selfie-Verifikation
 //
 import SwiftUI
 import AVFoundation
@@ -39,7 +39,6 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Tutorial
 struct TutorialView: View {
     let onStart: () -> Void
     var body: some View {
@@ -71,7 +70,6 @@ struct TutorialView: View {
     }
 }
 
-// MARK: - Live-Scanning
 struct ScanningView: View {
     @ObservedObject var model: CameraModel
 
@@ -97,8 +95,17 @@ struct ScanningView: View {
             if let v = model.verdict {
                 Text("Roll \(String(format: "%.1f", v.roll))° · Yaw \(String(format: "%.1f", v.yaw))° · Face \(Int(v.faceWidth))px")
                     .font(.caption2).foregroundColor(.white.opacity(0.6))
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 8)
             }
+
+            // Manueller Capture (immer verfügbar)
+            Button(action: { model.forceCapture() }) {
+                Text("Jetzt prüfen")
+                    .font(.subheadline).foregroundColor(.black)
+                    .padding(.vertical, 10).padding(.horizontal, 24)
+                    .background(Color.white).cornerRadius(10)
+            }
+            .padding(.bottom, 24)
         }
     }
 
@@ -113,7 +120,6 @@ struct ScanningView: View {
     }
 }
 
-// MARK: - Capture
 struct CapturingView: View {
     var body: some View {
         VStack {
@@ -130,7 +136,6 @@ struct CapturingView: View {
     }
 }
 
-// MARK: - Ergebnis
 struct ResultView: View {
     let verdict: GateVerdict
     let incode: IncodeInference.Result?
@@ -138,58 +143,96 @@ struct ResultView: View {
     let onRestart: () -> Void
 
     var body: some View {
-        VStack(spacing: 16) {
-            Spacer()
-            if verdict.ok {
-                Image(systemName: "checkmark.circle.fill").font(.system(size: 64)).foregroundColor(.green)
-                Text("Gesicht erfasst!")
-                    .font(.title2).bold().foregroundColor(.white)
-            } else {
-                Image(systemName: "xmark.circle.fill").font(.system(size: 64)).foregroundColor(.red)
-                Text(verdict.reason ?? "Fehler")
-                    .font(.title2).bold().foregroundColor(.red)
-                    .multilineTextAlignment(.center)
-                Text("Selfie konnte nicht verarbeitet werden")
-                    .font(.subheadline).foregroundColor(.white.opacity(0.7))
-            }
-            Spacer()
-            if let incode = incode {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Incode-Analyse").font(.caption).bold().foregroundColor(.cyan)
-                    if incode.errors.isEmpty {
-                        Text("Quality-Score: \(String(format: "%.3f", incode.qualityScore))")
-                            .font(.caption).foregroundColor(.white)
-                        Text("Attribute: \(incode.attributeConf.map { String(format: "%.2f", $0) }.joined(separator: " / "))")
-                            .font(.caption).foregroundColor(.white)
-                        Text("Occlusion: \(String(format: "%.1f", incode.occlusionRatio * 100))% verdeckt")
-                            .font(.caption).foregroundColor(incode.occlusionRatio < 0.3 ? .green : .orange)
-                    } else {
-                        ForEach(incode.errors, id: \.self) { e in
-                            Text("⚠️ \(e)").font(.caption2).foregroundColor(.orange)
-                        }
-                    }
+        ScrollView {
+            VStack(spacing: 16) {
+                Spacer().frame(height: 30)
+                if verdict.ok {
+                    Image(systemName: "checkmark.circle.fill").font(.system(size: 64)).foregroundColor(.green)
+                    Text("Gesicht erfasst!")
+                        .font(.title2).bold().foregroundColor(.white)
+                } else {
+                    Image(systemName: "xmark.circle.fill").font(.system(size: 64)).foregroundColor(.red)
+                    Text(verdict.reason ?? "Fehler")
+                        .font(.title2).bold().foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                    Text("Selfie konnte nicht verarbeitet werden")
+                        .font(.subheadline).foregroundColor(.white.opacity(0.7))
+                }
+
+                // VOLLSTÄNDIGE Gate-Tabelle mit DURCH/NICHT DURCH
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Gate-Check").font(.caption).bold().foregroundColor(.cyan)
+                    GateRow(name: "Roll (Neigung)", ok: abs(verdict.roll) <= Gates.rollMax,
+                            val: String(format: "%.1f°", verdict.roll))
+                    GateRow(name: "Pitch", ok: abs(verdict.pitch) <= Gates.pitchMax,
+                            val: String(format: "%.1f°", verdict.pitch))
+                    GateRow(name: "Yaw", ok: verdict.yaw >= Gates.yawMin && verdict.yaw <= Gates.yawMax,
+                            val: String(format: "%.1f°", verdict.yaw))
+                    GateRow(name: "Face-Größe", ok: verdict.faceWidth >= Gates.minFaceWidth,
+                            val: "\(Int(verdict.faceWidth))px")
+                    GateRow(name: "Helligkeit", ok: verdict.brightness >= Gates.brightnessMin,
+                            val: String(format: "%.0f", verdict.brightness))
+                    GateRow(name: "Schärfe", ok: verdict.contrast >= Gates.contrastMin,
+                            val: String(format: "%.0f", verdict.contrast))
+                    GateRow(name: "Augen offen", ok: verdict.earMin >= Gates.earClosed,
+                            val: String(format: "%.2f", verdict.earMin))
                 }
                 .padding(14).background(Color.black.opacity(0.55)).cornerRadius(12)
-            }
-            Spacer()
-            HStack(spacing: 14) {
-                Button(action: onRetry) {
-                    Text("Nochmal").font(.headline).foregroundColor(.black)
-                        .frame(maxWidth: .infinity).padding(.vertical, 14)
-                        .background(Color.white).cornerRadius(12)
+
+                if let incode = incode {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Incode-Analyse").font(.caption).bold().foregroundColor(.cyan)
+                        if incode.errors.isEmpty {
+                            Text("Quality-Score: \(String(format: "%.3f", incode.qualityScore))")
+                                .font(.caption).foregroundColor(.white)
+                            Text("Attribute: \(incode.attributeConf.map { String(format: "%.2f", $0) }.joined(separator: " / "))")
+                                .font(.caption).foregroundColor(.white)
+                            Text("Occlusion: \(String(format: "%.1f", incode.occlusionRatio * 100))% verdeckt")
+                                .font(.caption).foregroundColor(incode.occlusionRatio < 0.3 ? .green : .orange)
+                        } else {
+                            ForEach(incode.errors, id: \.self) { e in
+                                Text("⚠️ \(e)").font(.caption2).foregroundColor(.orange)
+                            }
+                        }
+                    }
+                    .padding(14).background(Color.black.opacity(0.55)).cornerRadius(12)
                 }
-                Button(action: onRestart) {
-                    Text("Zurück").font(.headline).foregroundColor(.white)
-                        .frame(maxWidth: .infinity).padding(.vertical, 14)
-                        .background(Color.white.opacity(0.2)).cornerRadius(12)
+
+                HStack(spacing: 14) {
+                    Button(action: onRetry) {
+                        Text("Nochmal").font(.headline).foregroundColor(.black)
+                            .frame(maxWidth: .infinity).padding(.vertical, 14)
+                            .background(Color.white).cornerRadius(12)
+                    }
+                    Button(action: onRestart) {
+                        Text("Zurück").font(.headline).foregroundColor(.white)
+                            .frame(maxWidth: .infinity).padding(.vertical, 14)
+                            .background(Color.white.opacity(0.2)).cornerRadius(12)
+                    }
                 }
+                .padding(.horizontal, 20).padding(.bottom, 30)
             }
-            .padding(.horizontal, 20).padding(.bottom, 30)
         }
     }
 }
 
-// MARK: - Camera-Model (State-Machine)
+struct GateRow: View {
+    let name: String
+    let ok: Bool
+    let val: String
+    var body: some View {
+        HStack {
+            Text(name).font(.caption).foregroundColor(.white)
+            Spacer()
+            Text(val).font(.caption).monospacedDigit().foregroundColor(.white.opacity(0.8))
+            Text(ok ? "DURCH" : "NICHT DURCH")
+                .font(.caption2).bold()
+                .foregroundColor(ok ? .green : .red)
+                .frame(width: 76)
+        }
+    }
+}
+
 final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     let session = AVCaptureSession()
     @Published var state: CamState = .idle
@@ -204,7 +247,9 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
     private var lastPub: TimeInterval = 0
     private var okSince: Date?
     private var captureInProgress = false
-    private var running = false
+    private var lastFaceBox: CGRect?
+    private var lastBuffer: CVPixelBuffer?
+    private var lastVerdict: GateVerdict?
 
     static func buildVisionRequests() -> [VNRequest] {
         let detect = VNDetectFaceLandmarksRequest()
@@ -239,26 +284,25 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
             configured = true
         }
         if !session.isRunning {
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.session.startRunning()
-                self.running = true
-            }
+            DispatchQueue.global(qos: .userInitiated).async { self.session.startRunning() }
         }
     }
 
     func beginScanning() {
-        okSince = nil
-        captureInProgress = false
-        finalVerdict = nil
-        finalIncode = nil
+        okSince = nil; captureInProgress = false
+        finalVerdict = nil; finalIncode = nil
         DispatchQueue.main.async { self.state = .scanning }
     }
 
-    func resetToIdle() {
-        DispatchQueue.main.async { self.state = .idle }
-    }
-
+    func resetToIdle() { DispatchQueue.main.async { self.state = .idle } }
     func stop() { if session.isRunning { session.stopRunning() } }
+
+    func forceCapture() {
+        guard state == .scanning, !captureInProgress else { return }
+        if let buf = lastBuffer, let box = lastFaceBox, let v = lastVerdict {
+            triggerCapture(buf, box: box, verdict: v)
+        }
+    }
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let px = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
@@ -267,13 +311,16 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
         do { try handler.perform(visionRequests) } catch { return }
         guard let face = (visionRequests[0] as? VNDetectFaceLandmarksRequest)?.results?.first else {
             okSince = nil
+            lastFaceBox = nil; lastBuffer = nil; lastVerdict = nil
             publish(GateVerdict.fail(IncodeText.faceNotFound))
             return
         }
+        lastFaceBox = face.boundingBox
+        lastBuffer = px
         let v = evaluateLive(obs: face, buffer: px)
+        lastVerdict = v
         publish(v)
 
-        // Auto-Capture: Gates 1.8s stabil OK
         if state == .scanning && !captureInProgress {
             if v.ok {
                 if okSince == nil { okSince = Date() }
@@ -290,7 +337,7 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
         captureInProgress = true
         DispatchQueue.main.async { self.state = .capturing }
         let incode = IncodeInference.run(buf, box: box)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.finalVerdict = v
             self.finalIncode = incode
             self.state = .done
@@ -305,7 +352,6 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
     }
 }
 
-// MARK: - Preview (konstant gespiegelt via Layer-Transform — kein Connection-Flicker)
 struct CameraPreview: UIViewRepresentable {
     class PreviewView: UIView {
         override class var layerClass: AnyClass { AVCaptureVideoPreviewLayer.self }
@@ -316,7 +362,6 @@ struct CameraPreview: UIViewRepresentable {
         let v = PreviewView()
         v.previewLayer.session = model.session
         v.previewLayer.videoGravity = .resizeAspectFill
-        // Frontkamera: einmal spiegeln, konstant. Kein automaticallyAdjusts* — das war der Flicker.
         v.previewLayer.transform = CATransform3DMakeScale(-1, 1, 1)
         return v
     }
