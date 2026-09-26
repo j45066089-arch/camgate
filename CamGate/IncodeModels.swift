@@ -112,10 +112,11 @@ enum IncodeInference {
                 if let mask = out.featureValue(for: "output")?.multiArrayValue {
                     let p = mask.dataPointer.bindMemory(to: Float.self, capacity: mask.count)
                     let per = mask.count / 2
-                    guard per > 0 else { r.errors.append("occl: leeres Output") }
-                    var occ: Float = 0
-                    for i in 0..<per { if p[i + per] > p[i] { occ += 1 } }
-                    r.occlusionRatio = occ / Float(per)
+                    if per > 0 {
+                        var occ: Float = 0
+                        for i in 0..<per { if p[i + per] > p[i] { occ += 1 } }
+                        r.occlusionRatio = occ / Float(per)
+                    } else { r.errors.append("occl: leeres Output") }
                 } else { r.errors.append("occl: kein 'output'") }
             } catch { r.errors.append("occl: \(error.localizedDescription)") }
         } else if occlusionModel == nil { r.errors.append("occl-Modell fehlt") }
