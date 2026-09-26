@@ -1,0 +1,4373 @@
+{
+  "storage" : "model.espresso.weights",
+  "analyses" : {
+
+  },
+  "properties" : {
+
+  },
+  "format_version" : 200,
+  "metadata_in_weights" : [
+
+  ],
+  "layers" : [
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.0\/features.0.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0",
+      "K" : 3,
+      "blob_biases" : 1,
+      "stride_x" : 2,
+      "name" : "\/model\/encoder\/features.0\/features.0.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 1,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "input",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 3
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a_3_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a_3_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a_3_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a_3_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.0\/features.0.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.0\/features.0.2\/Clip",
+      "top" : "\/model\/encoder\/features.0\/features.0.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.0\/features.0.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 5,
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 8,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.0\/features.0.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 7
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a_7_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a_7_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a_7_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a_7_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.1\/conv\/conv.3\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 9,
+      "name" : "\/model\/encoder\/features.1\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 11
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.0\/features.0.2\/Clip_output_0,\/model\/encoder\/features.1\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.1\/Add",
+      "top" : "\/model\/encoder\/features.1\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.1\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 13,
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.1\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 15
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a_13_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a_13_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a_13_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a_13_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 17,
+      "stride_x" : 2,
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 48,
+      "pad_t" : 1,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 19
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a_17_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a_17_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a_17_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a_17_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.2\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.2\/conv\/conv.6\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 21,
+      "name" : "\/model\/encoder\/features.2\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 23
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 25,
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 27
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a_22_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a_22_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a_22_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a_22_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 29,
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 48,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 31
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a_26_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a_26_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a_26_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a_26_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.3\/conv\/conv.6\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 33,
+      "name" : "\/model\/encoder\/features.3\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 35
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.2\/conv\/conv.6\/Conv_output_0,\/model\/encoder\/features.3\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.3\/Add",
+      "top" : "\/model\/encoder\/features.3\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.3\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 37,
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.3\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 39
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a_32_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a_32_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a_32_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a_32_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 41,
+      "stride_x" : 2,
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 48,
+      "pad_t" : 1,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 43
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a_36_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a_36_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a_36_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a_36_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.4\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.4\/conv\/conv.6\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 45,
+      "name" : "\/model\/encoder\/features.4\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 47
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 49,
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 51
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a_41_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a_41_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a_41_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a_41_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 53,
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 48,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 55
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a_45_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a_45_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a_45_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a_45_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.5\/conv\/conv.6\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 57,
+      "name" : "\/model\/encoder\/features.5\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 59
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.4\/conv\/conv.6\/Conv_output_0,\/model\/encoder\/features.5\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.5\/Add",
+      "top" : "\/model\/encoder\/features.5\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.5\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 61,
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.5\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 63
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a_51_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a_51_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a_51_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a_51_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 65,
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 48,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 67
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a_55_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a_55_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a_55_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a_55_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.6\/conv\/conv.6\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 69,
+      "name" : "\/model\/encoder\/features.6\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 8,
+      "bottom" : "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 71
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.5\/Add_output_0,\/model\/encoder\/features.6\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.6\/Add",
+      "top" : "\/model\/encoder\/features.6\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.6\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0",
+      "K" : 8,
+      "blob_biases" : 73,
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.6\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 75
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a_61_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a_61_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a_61_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a_61_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 77,
+      "stride_x" : 2,
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 48,
+      "pad_t" : 1,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 48,
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 79
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a_65_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a_65_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a_65_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a_65_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.7\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.7\/conv\/conv.6\/Conv_output_0",
+      "K" : 48,
+      "blob_biases" : 81,
+      "name" : "\/model\/encoder\/features.7\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 16,
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 83
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0",
+      "K" : 16,
+      "blob_biases" : 85,
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 87
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a_70_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a_70_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a_70_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a_70_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 89,
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 96,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 91
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a_74_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a_74_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a_74_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a_74_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.8\/conv\/conv.6\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 93,
+      "name" : "\/model\/encoder\/features.8\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 16,
+      "bottom" : "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 95
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.7\/conv\/conv.6\/Conv_output_0,\/model\/encoder\/features.8\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.8\/Add",
+      "top" : "\/model\/encoder\/features.8\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.8\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0",
+      "K" : 16,
+      "blob_biases" : 97,
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.8\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 99
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a_80_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a_80_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a_80_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a_80_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 101,
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 96,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 103
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a_84_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a_84_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a_84_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a_84_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.9\/conv\/conv.6\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 105,
+      "name" : "\/model\/encoder\/features.9\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 16,
+      "bottom" : "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 107
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.8\/Add_output_0,\/model\/encoder\/features.9\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.9\/Add",
+      "top" : "\/model\/encoder\/features.9\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.9\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0",
+      "K" : 16,
+      "blob_biases" : 109,
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.9\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 111
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a_90_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a_90_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a_90_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a_90_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 113,
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 96,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 115
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a_94_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a_94_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a_94_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a_94_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.10\/conv\/conv.6\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 117,
+      "name" : "\/model\/encoder\/features.10\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 16,
+      "bottom" : "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 119
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.9\/Add_output_0,\/model\/encoder\/features.10\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.10\/Add",
+      "top" : "\/model\/encoder\/features.10\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.10\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0",
+      "K" : 16,
+      "blob_biases" : 121,
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.10\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 123
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a_100_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a_100_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a_100_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a_100_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 125,
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 96,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 127
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a_104_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a_104_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a_104_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a_104_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.11\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.11\/conv\/conv.6\/Conv_output_0",
+      "K" : 96,
+      "blob_biases" : 129,
+      "name" : "\/model\/encoder\/features.11\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 24,
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 131
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0",
+      "K" : 24,
+      "blob_biases" : 133,
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 135
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a_109_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a_109_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a_109_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a_109_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0",
+      "K" : 144,
+      "blob_biases" : 137,
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 144,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 139
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a_113_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a_113_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a_113_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a_113_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.12\/conv\/conv.6\/Conv_output_0",
+      "K" : 144,
+      "blob_biases" : 141,
+      "name" : "\/model\/encoder\/features.12\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 24,
+      "bottom" : "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 143
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.11\/conv\/conv.6\/Conv_output_0,\/model\/encoder\/features.12\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.12\/Add",
+      "top" : "\/model\/encoder\/features.12\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.12\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0",
+      "K" : 24,
+      "blob_biases" : 145,
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "\/model\/encoder\/features.12\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 147
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a_119_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a_119_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a_119_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a_119_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0",
+      "K" : 144,
+      "blob_biases" : 149,
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 144,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 151
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a_123_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a_123_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a_123_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a_123_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.13\/conv\/conv.6\/Conv_output_0",
+      "K" : 144,
+      "blob_biases" : 153,
+      "name" : "\/model\/encoder\/features.13\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 24,
+      "bottom" : "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 155
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.12\/Add_output_0,\/model\/encoder\/features.13\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.13\/Add",
+      "top" : "\/model\/encoder\/features.13\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.13\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0",
+      "K" : 24,
+      "blob_biases" : 157,
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "\/model\/encoder\/features.13\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 159
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a_129_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a_129_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a_129_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a_129_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0",
+      "K" : 144,
+      "blob_biases" : 161,
+      "stride_x" : 2,
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 144,
+      "pad_t" : 1,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 163
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a_133_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a_133_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a_133_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a_133_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.14\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.14\/conv\/conv.6\/Conv_output_0",
+      "K" : 144,
+      "blob_biases" : 165,
+      "name" : "\/model\/encoder\/features.14\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 40,
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 167
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0",
+      "K" : 40,
+      "blob_biases" : 169,
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 240,
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 171
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a_138_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a_138_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a_138_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a_138_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0",
+      "K" : 240,
+      "blob_biases" : 173,
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 240,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 240,
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 175
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a_142_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a_142_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a_142_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a_142_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.15\/conv\/conv.6\/Conv_output_0",
+      "K" : 240,
+      "blob_biases" : 177,
+      "name" : "\/model\/encoder\/features.15\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 40,
+      "bottom" : "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 179
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.14\/conv\/conv.6\/Conv_output_0,\/model\/encoder\/features.15\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.15\/Add",
+      "top" : "\/model\/encoder\/features.15\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.15\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0",
+      "K" : 40,
+      "blob_biases" : 181,
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 240,
+      "bottom" : "\/model\/encoder\/features.15\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 183
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a_148_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a_148_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a_148_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a_148_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0",
+      "K" : 240,
+      "blob_biases" : 185,
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 240,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 240,
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 187
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a_152_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a_152_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a_152_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a_152_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.16\/conv\/conv.6\/Conv_output_0",
+      "K" : 240,
+      "blob_biases" : 189,
+      "name" : "\/model\/encoder\/features.16\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 40,
+      "bottom" : "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 191
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.15\/Add_output_0,\/model\/encoder\/features.16\/conv\/conv.6\/Conv_output_0",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.16\/Add",
+      "top" : "\/model\/encoder\/features.16\/Add_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.16\/Add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0",
+      "K" : 40,
+      "blob_biases" : 193,
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 240,
+      "bottom" : "\/model\/encoder\/features.16\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 195
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a_158_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a_158_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a_158_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a_158_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0",
+      "K" : 240,
+      "blob_biases" : 197,
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 240,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 240,
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 199
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0",
+      "alpha" : 0,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_x_a",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_x_a",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a",
+      "alpha" : -1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a_162_post_scale",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_minus_x_minus_b_scale",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a_162_post_scale",
+      "alpha" : 0,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a_162_post_scale_shift",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_minus_x_minus_b_shift",
+      "beta" : 0
+    },
+    {
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a_162_post_scale_shift",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "type" : "elementwise",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_min_minus_x_minus_b",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip",
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_output_0",
+      "type" : "activation",
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/encoder\/features.17\/conv\/conv.6\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/encoder\/features.17\/conv\/conv.6\/Conv_output_0",
+      "K" : 240,
+      "blob_biases" : 201,
+      "name" : "\/model\/encoder\/features.17\/conv\/conv.6\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 80,
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 203
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/aspp_conv1\/aspp_conv1.0\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/aspp_conv1\/aspp_conv1.2\/Relu_output_0",
+      "K" : 80,
+      "blob_biases" : 205,
+      "name" : "\/model\/decoder\/aspp_conv1\/aspp_conv1.0\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 128,
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 207
+    },
+    {
+      "pad_r" : 0,
+      "debug_info" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.0\/AveragePool",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "size_x" : 7,
+      "top" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.0\/AveragePool_output_0",
+      "top_shape_style" : 0,
+      "stride_x" : 1,
+      "avg_or_max" : 0,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.0\/AveragePool",
+      "pad_t" : 0,
+      "stride_y" : 1,
+      "bottom" : "\/model\/encoder\/features.17\/conv\/conv.6\/Conv_output_0",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 7,
+      "pad_value" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.1\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.1\/Conv_output_0",
+      "K" : 80,
+      "name" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.1\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.0\/AveragePool_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 209
+    },
+    {
+      "bottom" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.1\/Conv_output_0",
+      "weights" : {
+
+      },
+      "mode" : 3,
+      "debug_info" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.2\/Sigmoid",
+      "top" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.2\/Sigmoid_output_0",
+      "type" : "activation",
+      "name" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.2\/Sigmoid"
+    },
+    {
+      "weights" : {
+
+      },
+      "target_size_w" : 7,
+      "grid_sampling_mode" : 1,
+      "crop_index_mode" : 0,
+      "spatial_scale" : 1,
+      "type" : "crop_and_resize",
+      "mode" : 1,
+      "resized_dims" : 0,
+      "bottom" : "\/model\/decoder\/aspp_conv2\/aspp_conv2.2\/Sigmoid_output_0",
+      "debug_info" : "\/model\/decoder\/Upsample",
+      "target_size_h" : 7,
+      "name" : "\/model\/decoder\/Upsample",
+      "top" : "\/model\/decoder\/Upsample_output_0"
+    },
+    {
+      "bottom" : "\/model\/decoder\/aspp_conv1\/aspp_conv1.2\/Relu_output_0,\/model\/decoder\/Upsample_output_0",
+      "alpha" : 1,
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "\/model\/decoder\/Mul",
+      "top" : "\/model\/decoder\/Mul_output_0",
+      "type" : "elementwise",
+      "name" : "\/model\/decoder\/Mul",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/conv_up1\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/conv_up1\/Conv_output_0",
+      "K" : 128,
+      "blob_biases" : 211,
+      "name" : "\/model\/decoder\/conv_up1\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 128,
+      "bottom" : "\/model\/decoder\/Mul_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 213
+    },
+    {
+      "weights" : {
+
+      },
+      "target_size_w" : 28,
+      "grid_sampling_mode" : 1,
+      "crop_index_mode" : 0,
+      "spatial_scale" : 1,
+      "type" : "crop_and_resize",
+      "mode" : 1,
+      "resized_dims" : 0,
+      "bottom" : "\/model\/decoder\/conv_up1\/Conv_output_0",
+      "debug_info" : "\/model\/decoder\/Upsample_1",
+      "target_size_h" : 28,
+      "name" : "\/model\/decoder\/Upsample_1",
+      "top" : "\/model\/decoder\/Upsample_1_output_0"
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/convs8\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/convs8\/Conv_output_0",
+      "K" : 8,
+      "name" : "\/model\/decoder\/convs8\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 64,
+      "bottom" : "\/model\/encoder\/features.6\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 215
+    },
+    {
+      "weights" : {
+
+      },
+      "debug_info" : "\/model\/decoder\/Concat",
+      "top" : "\/model\/decoder\/Concat_output_0",
+      "type" : "concat",
+      "name" : "\/model\/decoder\/Concat",
+      "bottom" : "\/model\/decoder\/Upsample_1_output_0,\/model\/decoder\/convs8\/Conv_output_0"
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/conv_up2\/conv\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/conv_up2\/relu\/Relu_output_0",
+      "K" : 192,
+      "blob_biases" : 217,
+      "name" : "\/model\/decoder\/conv_up2\/conv\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 128,
+      "bottom" : "\/model\/decoder\/Concat_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 219
+    },
+    {
+      "weights" : {
+
+      },
+      "target_size_w" : 56,
+      "grid_sampling_mode" : 1,
+      "crop_index_mode" : 0,
+      "spatial_scale" : 1,
+      "type" : "crop_and_resize",
+      "mode" : 1,
+      "resized_dims" : 0,
+      "bottom" : "\/model\/decoder\/conv_up2\/relu\/Relu_output_0",
+      "debug_info" : "\/model\/decoder\/Upsample_2",
+      "target_size_h" : 56,
+      "name" : "\/model\/decoder\/Upsample_2",
+      "top" : "\/model\/decoder\/Upsample_2_output_0"
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/convs4\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/convs4\/Conv_output_0",
+      "K" : 8,
+      "name" : "\/model\/decoder\/convs4\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 32,
+      "bottom" : "\/model\/encoder\/features.3\/Add_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 221
+    },
+    {
+      "weights" : {
+
+      },
+      "debug_info" : "\/model\/decoder\/Concat_1",
+      "top" : "\/model\/decoder\/Concat_1_output_0",
+      "type" : "concat",
+      "name" : "\/model\/decoder\/Concat_1",
+      "bottom" : "\/model\/decoder\/Upsample_2_output_0,\/model\/decoder\/convs4\/Conv_output_0"
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/decoder\/conv_up3\/conv\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "\/model\/decoder\/conv_up3\/relu\/Relu_output_0",
+      "K" : 160,
+      "blob_biases" : 223,
+      "name" : "\/model\/decoder\/conv_up3\/conv\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 128,
+      "bottom" : "\/model\/decoder\/Concat_1_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 225
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "\/model\/segmentation_head\/conv2d\/Conv",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 1,
+      "top" : "\/model\/segmentation_head\/conv2d\/Conv_output_0",
+      "K" : 128,
+      "blob_biases" : 227,
+      "name" : "\/model\/segmentation_head\/conv2d\/Conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 1,
+      "has_biases" : 1,
+      "C" : 2,
+      "bottom" : "\/model\/decoder\/conv_up3\/relu\/Relu_output_0",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 229
+    },
+    {
+      "weights" : {
+
+      },
+      "target_size_w" : 224,
+      "grid_sampling_mode" : 1,
+      "resized_dims" : 0,
+      "crop_index_mode" : 0,
+      "type" : "crop_and_resize",
+      "mode" : 1,
+      "spatial_scale" : 1,
+      "attributes" : {
+        "is_output" : 1
+      },
+      "bottom" : "\/model\/segmentation_head\/conv2d\/Conv_output_0",
+      "debug_info" : "\/model\/segmentation_head\/Upsample",
+      "target_size_h" : 224,
+      "name" : "\/model\/segmentation_head\/Upsample",
+      "top" : "output"
+    }
+  ]
+}

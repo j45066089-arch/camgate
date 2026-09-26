@@ -1,0 +1,1504 @@
+{
+  "layer_shapes" : {
+    "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a_84_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a_133_post_scale" : {
+      "k" : 144,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/aspp_conv2\/aspp_conv2.2\/Sigmoid_output_0" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "output" : {
+      "k" : 2,
+      "w" : 224,
+      "n" : 1,
+      "h" : 224
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 144,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a_123_post_scale" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/convs4\/Conv_output_0" : {
+      "k" : 32,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/decoder\/conv_up2\/relu\/Relu_output_0" : {
+      "k" : 128,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.5\/Add_output_0" : {
+      "k" : 8,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a_152_post_scale_shift" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a_119_post_scale_shift" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a_100_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/decoder\/Mul_output_0" : {
+      "k" : 128,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "input" : {
+      "k" : 3,
+      "w" : 224,
+      "n" : 1,
+      "h" : 224
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/aspp_conv2\/aspp_conv2.1\/Conv_output_0" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a_148_post_scale_shift" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_x_a_100_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.0\/features.0.2\/Clip_output_0" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a_41_post_scale" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a_61_post_scale_shift" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a_51_post_scale" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a_158_post_scale" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a_113_post_scale" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/Concat_1_output_0" : {
+      "k" : 160,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a_13_post_scale_shift" : {
+      "k" : 48,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.3\/Add_output_0" : {
+      "k" : 8,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_x_a_13_post_scale" : {
+      "k" : 48,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a_45_post_scale" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a_84_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a_90_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/decoder\/convs8\/Conv_output_0" : {
+      "k" : 64,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.0\/Conv_output_0_min_x_a_61_post_scale" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 144,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a_41_post_scale_shift" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.0\/Conv_output_0_min_x_a_51_post_scale_shift" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a_36_post_scale_shift" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 80,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/decoder\/Upsample_1_output_0" : {
+      "k" : 128,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.16\/Add_output_0" : {
+      "k" : 40,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a_74_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/Upsample_output_0" : {
+      "k" : 128,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 144,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 40,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.0\/Conv_output_0_min_x_a_148_post_scale" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.10\/Add_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a_104_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/Add_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 24,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a_113_post_scale_shift" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.12\/Add_output_0" : {
+      "k" : 24,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/Concat_output_0" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a_26_post_scale_shift" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/segmentation_head\/conv2d\/Conv_output_0" : {
+      "k" : 2,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/decoder\/Upsample_2_output_0" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.3\/Conv_output_0_min_x_a_104_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a_55_post_scale" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a_142_post_scale_shift" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a_138_post_scale" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 24,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a_109_post_scale_shift" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/decoder\/aspp_conv1\/aspp_conv1.2\/Relu_output_0" : {
+      "k" : 128,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a_94_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0_min_x_a_133_post_scale_shift" : {
+      "k" : 144,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a_17_post_scale" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a_65_post_scale" : {
+      "k" : 48,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 144,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/decoder\/aspp_conv2\/aspp_conv2.0\/AveragePool_output_0" : {
+      "k" : 80,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a_162_post_scale" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/decoder\/conv_up3\/relu\/Relu_output_0" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.1\/Add_output_0" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a_22_post_scale" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.3\/Conv_output_0_min_x_a_152_post_scale" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.8\/Add_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a_70_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a_138_post_scale_shift" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a_129_post_scale" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a_162_post_scale_shift" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a_3_post_scale" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.0\/Conv_output_0_min_x_a_129_post_scale_shift" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.11\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 16,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/decoder\/conv_up1\/Conv_output_0" : {
+      "k" : 128,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a_158_post_scale_shift" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a_70_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a_80_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_x_a_94_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a_3_post_scale_shift" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.7\/conv\/conv.3\/Conv_output_0_min_x_a_65_post_scale_shift" : {
+      "k" : 48,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.5\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_x_a_22_post_scale_shift" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a_32_post_scale_shift" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a_7_post_scale" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_x_a_142_post_scale" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a_32_post_scale" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.0\/Conv_output_0_min_x_a_90_post_scale_shift" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.3\/Conv_output_0_min_x_a_17_post_scale_shift" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.0\/features.0.0\/Conv_output_0_min_x_a" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.16\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 40,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.10\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.9\/conv\/conv.0\/Conv_output_0_min_x_a_80_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.6\/Add_output_0" : {
+      "k" : 8,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a_119_post_scale" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.3\/conv\/conv.3\/Conv_output_0_min_x_a_26_post_scale" : {
+      "k" : 48,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.1\/conv\/conv.0\/Conv_output_0_min_x_a_7_post_scale_shift" : {
+      "k" : 8,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.2\/conv\/conv.2\/Clip_output_0" : {
+      "k" : 48,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "\/model\/encoder\/features.5\/conv\/conv.3\/Conv_output_0_min_x_a_45_post_scale_shift" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0_min_x_a_55_post_scale_shift" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.14\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 40,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.8\/conv\/conv.3\/Conv_output_0_min_x_a_74_post_scale" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.17\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.0\/Conv_output_0_min_minus_x_minus_b" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.13\/Add_output_0" : {
+      "k" : 24,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.0\/Conv_output_0_min_x_a" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.0\/Conv_output_0_min_x_a_109_post_scale" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.13\/conv\/conv.3\/Conv_output_0_min_x_a_123_post_scale_shift" : {
+      "k" : 144,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.15\/Add_output_0" : {
+      "k" : 40,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.4\/conv\/conv.3\/Conv_output_0_min_x_a_36_post_scale" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "\/model\/encoder\/features.12\/conv\/conv.6\/Conv_output_0" : {
+      "k" : 24,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "\/model\/encoder\/features.15\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 240,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "\/model\/encoder\/features.6\/conv\/conv.3\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    }
+  }
+}

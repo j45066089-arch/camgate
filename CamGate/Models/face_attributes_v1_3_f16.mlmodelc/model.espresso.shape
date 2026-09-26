@@ -1,0 +1,599 @@
+{
+  "layer_shapes" : {
+    "\/backbone1\/backbone1.10\/act\/Relu_output_0" : {
+      "k" : 72,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.3\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.4\/act\/Relu_output_0" : {
+      "k" : 32,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.12\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 88,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.9\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 64,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.12\/Add_output_0" : {
+      "k" : 88,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/avg_pool\/GlobalAveragePool_output_0" : {
+      "k" : 512,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 1
+    },
+    "\/backbone1\/backbone1.5\/Add_output_0" : {
+      "k" : 36,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.4\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 28,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.3\/Pad_output_0" : {
+      "k" : 28,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone2\/backbone2.2\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.3\/act\/Relu_output_0" : {
+      "k" : 28,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone1\/backbone1.8\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.10\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 64,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/Flatten_output_0" : {
+      "k" : 1,
+      "w" : 512,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "\/backbone2\/backbone2.0\/max_pool\/MaxPool_output_0" : {
+      "k" : 88,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.2\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 24,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone1\/backbone1.7\/max_pool\/MaxPool_output_0" : {
+      "k" : 42,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.3\/Add_output_0" : {
+      "k" : 28,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone1\/backbone1.2\/act\/Relu_output_0" : {
+      "k" : 24,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone1\/backbone1.11\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 80,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.8\/Pad_output_0" : {
+      "k" : 56,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.0\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.6\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 42,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone2\/backbone2.4\/Add_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.11\/Add_output_0" : {
+      "k" : 80,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.4\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/classifier_2\/Conv_output_0" : {
+      "k" : 512,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "input" : {
+      "k" : 3,
+      "w" : 160,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 160
+    },
+    "\/backbone1\/backbone1.12\/act\/Relu_output_0" : {
+      "k" : 88,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.5\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 32,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.8\/Add_output_0" : {
+      "k" : 56,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.6\/Pad_output_0" : {
+      "k" : 42,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone2\/backbone2.3\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.12\/Pad_output_0" : {
+      "k" : 88,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.9\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 56,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.2\/Add_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.10\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 72,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.0\/Pad_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.4\/max_pool\/MaxPool_output_0" : {
+      "k" : 28,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone2\/backbone2.4\/act\/Relu_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.3\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 28,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone2\/backbone2.1\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.6\/Add_output_0" : {
+      "k" : 42,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.10\/Add_output_0" : {
+      "k" : 72,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.7\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 48,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.4\/Pad_output_0" : {
+      "k" : 32,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone2\/backbone2.3\/act\/Relu_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.2\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 24,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "output_conf" : {
+      "k" : 1,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "\/backbone2\/backbone2.0\/Add_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.1\/Relu_output_0" : {
+      "k" : 24,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone2\/backbone2.0\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 88,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.9\/act\/Relu_output_0" : {
+      "k" : 64,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.6\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 36,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.11\/Pad_output_0" : {
+      "k" : 80,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.2\/act\/Relu_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.4\/Add_output_0" : {
+      "k" : 32,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone2\/backbone2.4\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.11\/act\/Relu_output_0" : {
+      "k" : 80,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.9\/Pad_output_0" : {
+      "k" : 64,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.8\/act\/Relu_output_0" : {
+      "k" : 56,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.4\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 32,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone2\/backbone2.1\/act\/Relu_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.12\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 80,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.2\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.7\/act\/Relu_output_0" : {
+      "k" : 48,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.8\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 56,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.9\/Add_output_0" : {
+      "k" : 64,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.2\/Add_output_0" : {
+      "k" : 24,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone1\/backbone1.7\/Pad_output_0" : {
+      "k" : 48,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.3\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 24,
+      "w" : 80,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 80
+    },
+    "\/backbone2\/backbone2.0\/act\/Relu_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/classifier\/classifier.0\/Gemm_output_0" : {
+      "k" : 1,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "\/backbone1\/backbone1.10\/Pad_output_0" : {
+      "k" : 72,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.1\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone2\/backbone2.3\/Add_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.6\/act\/Relu_output_0" : {
+      "k" : 42,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.7\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 42,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.7\/Add_output_0" : {
+      "k" : 48,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone1\/backbone1.5\/Pad_output_0" : {
+      "k" : 36,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.5\/act\/Relu_output_0" : {
+      "k" : 36,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "\/backbone1\/backbone1.11\/convs\/convs.0\/Conv_output_0" : {
+      "k" : 72,
+      "w" : 20,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 20
+    },
+    "\/backbone2\/backbone2.1\/Add_output_0" : {
+      "k" : 96,
+      "w" : 10,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 10
+    },
+    "\/backbone1\/backbone1.5\/convs\/convs.1\/Conv_output_0" : {
+      "k" : 36,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    }
+  }
+}

@@ -7,7 +7,10 @@ targets:
   CamGate:
     type: application
     platform: iOS
-    sources: [CamGate]
+    sources:
+      - path: CamGate
+        excludes:
+          - Models
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.maurice.camgate
@@ -24,3 +27,5 @@ targets:
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGNING_REQUIRED: "NO"
         CODE_SIGNING_ALLOWED: "NO"
+    resources:
+      - path: CamGate/Models

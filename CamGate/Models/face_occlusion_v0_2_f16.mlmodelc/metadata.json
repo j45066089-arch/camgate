@@ -1,0 +1,68 @@
+[
+  {
+    "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float16",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "MultiArray of shape (1, 1, 2, 224, 224). The first and second dimensions correspond to sequence and batch size, respectively",
+        "shape" : "[]",
+        "name" : "output",
+        "type" : "MultiArray"
+      }
+    ],
+    "modelParameters" : [
+
+    ],
+    "specificationVersion" : 3,
+    "computePrecision" : "Float16",
+    "isUpdatable" : "0",
+    "stateSchema" : [
+
+    ],
+    "availability" : {
+      "macOS" : "10.14",
+      "tvOS" : "12.0",
+      "visionOS" : "1.0",
+      "watchOS" : "5.0",
+      "iOS" : "12.0",
+      "macCatalyst" : "12.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_neuralNetwork"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.version" : "5.2.0",
+      "com.github.apple.coremltools.source" : "onnx==1.13.0"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32 3 × 224 × 224)",
+        "shortDescription" : "MultiArray of shape (1, 1, 3, 224, 224). The first and second dimensions correspond to sequence and batch size, respectively",
+        "shape" : "[3, 224, 224]",
+        "name" : "input",
+        "type" : "MultiArray"
+      }
+    ],
+    "generatedClassName" : "face_occlusion_v0_2_f16",
+    "neuralNetworkLayerTypeHistogram" : {
+      "Concat" : 2,
+      "ActivationLinear" : 34,
+      "ActivationReLU" : 3,
+      "ResizeBilinear" : 4,
+      "Multiply" : 1,
+      "PoolingAverage" : 1,
+      "UnaryThreshold" : 68,
+      "Add" : 11,
+      "Convolution" : 59,
+      "ActivationSigmoid" : 1
+    },
+    "method" : "predict"
+  }
+]
