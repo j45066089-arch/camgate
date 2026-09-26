@@ -15,7 +15,7 @@ struct Gates {
     static let minFaceWidth = 280.0    // minFaceSize @ 720p-Referenz
     static let brightnessMin: Double = 85
     static let contrastMin: Double   = 25
-    static let earClosed             = 0.18
+    static let earClosed             = 0.04
     static let refWidth: Double      = 720.0
 }
 
