@@ -87,6 +87,7 @@ struct GateLine: View {
 final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     let session = AVCaptureSession()
     @Published var verdict: GateVerdict?
+    private var usedPosition: AVCaptureDevice.Position = .front
 
     private let queue = DispatchQueue(label: "camgate.vision", qos: .userInteractive)
     private lazy var visionRequests = Self.buildVisionRequests()
@@ -117,6 +118,7 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
         guard let dev = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
               let input = try? AVCaptureDeviceInput(device: dev),
               session.canAddInput(input) else { return }
+        self.usedPosition = dev.position
         session.addInput(input)
         let out = AVCaptureVideoDataOutput()
         out.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange]
@@ -131,7 +133,8 @@ final class CameraModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let px = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        let handler = VNImageRequestHandler(cvPixelBuffer: px, orientation: .up, options: [:])
+        let ori: CGImagePropertyOrientation = (self.usedPosition == .front) ? .leftMirrored : .right
+        let handler = VNImageRequestHandler(cvPixelBuffer: px, orientation: ori, options: [:])
         do {
             try handler.perform(visionRequests)
         } catch { return }

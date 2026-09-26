@@ -1,0 +1,4 @@
+*.ipa
+artifact*
+ipa_extract/
+signed_*
